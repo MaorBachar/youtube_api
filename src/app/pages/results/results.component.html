@@ -2,7 +2,7 @@
     <div class="results" *ngIf="videos&&videos.length; else noResults" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
         (scrolled)="onScroll()" [@listAnimation]="videos.length">
         <div class="results__item" *ngFor="let video of videos">
-            <app-video-search-item [video]="video" [withWatchLater]="true" [isWatchLater]="watchLaterListDic[video.id]"
+            <app-video-search-item [video]="video" [withWatchLater]="true" [isWatchLater]="watchListSet.has(video.id)"
                 (mouseenter)="video.hover=true" (mouseleave)="video.hover=false"></app-video-search-item>
         </div>
     </div>

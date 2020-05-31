@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { YoutubeService } from 'src/app/services/youtube.service';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { VideoDetailReq } from 'src/app/models/requests/video-detail.model';
 import { Video } from 'src/app/models/video.model';
 
@@ -14,7 +13,7 @@ export class WatchLaterComponent implements OnInit {
   public videos: Video[] = [];
   public loading: boolean = false;
   constructor(private youtubeService: YoutubeService) {
-      this.videosIds = Object.keys(this.youtubeService.getWatchLaterFromStorage());
+      this.videosIds = Array.from(this.youtubeService.getWatchLaterFromStorage());
       if (this.videosIds && this.videosIds.length) {
         this.getVideos();
       }
@@ -50,7 +49,7 @@ export class WatchLaterComponent implements OnInit {
   removeVideo(video:Video){
     var foundIndex = this.videos.findIndex((obj:Video) => video.id === obj.id);
     if(!isNaN(foundIndex)){
-      this.youtubeService.updateWatchLater(video.id,'delete');
+      this.youtubeService.removeFromWatchList(video.id);
       this.videos.splice(foundIndex,1);
     }
   }

@@ -13,7 +13,7 @@ import { VideoSearchReq } from '../models/requests/video-search.model';
 })
 export class YoutubeService extends HttpHandler {
   private searchSubject = new BehaviorSubject<string>(null);
-  private watchLaterSubject = new BehaviorSubject<object>(this.getWatchLaterFromStorage());
+  private watchLaterSubject = new BehaviorSubject<Set<string>>(this.getWatchLaterFromStorage());
   private baseUrl: string = 'https://www.googleapis.com/youtube/v3/';
   private key: string = '';
 
@@ -40,24 +40,27 @@ export class YoutubeService extends HttpHandler {
     return this.searchSubject.asObservable();
   }
 
-  public getWatchLaterFromStorage(): Array<string> {
-    return JSON.parse(localStorage.getItem('watchLater')) ? JSON.parse(localStorage.getItem('watchLater')) : new Object();
+  public getWatchLaterFromStorage(): Set<string> {
+    const parsedData: Array<string> = JSON.parse(localStorage.getItem('watchLater'));
+    return  parsedData ? new Set(parsedData) : new Set();
   }
-  public updateWatchLater(videoId: string, method: string): void {
-    const list: object = this.getWatchLaterFromStorage();
-    switch (method) {
-      case 'add':
-        list[videoId] = true;
-        break;
-      case 'delete':
-        delete list[videoId];
-        break;
-    }
-    localStorage.setItem('watchLater', JSON.stringify(list));
+
+  public addToWatchList(videoId: string): void {
+    const list: Set<string> = this.getWatchLaterFromStorage();
+    list.add(videoId);
+    localStorage.setItem('watchLater', JSON.stringify(Array.from(list)));
     this.watchLaterSubject.next(list);
   }
 
-  public getWatchLater(): Observable<object> {
+  public removeFromWatchList(videoId: string): void {
+    const list: Set<string> = this.getWatchLaterFromStorage();
+    list.delete(videoId);
+    localStorage.setItem('watchLater', JSON.stringify(Array.from(list)));
+    this.watchLaterSubject.next(list);
+
+  }
+
+  public getWatchLater(): Observable<Set<string>> {
     return this.watchLaterSubject.asObservable();
   }
 }

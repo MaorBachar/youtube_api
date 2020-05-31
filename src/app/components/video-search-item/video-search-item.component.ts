@@ -34,7 +34,7 @@ export class VideoSearchItemComponent implements OnInit {
   @Input() withWatchLater: boolean = false;
   @Input() withActions: boolean = false;
   @Input() withRemoveAction: boolean = false;
-  @Output() removeAction  = new EventEmitter();
+  @Output() removeAction = new EventEmitter();
 
   public watchLaterHover: boolean = false;
   constructor(private router: Router, private youtubeService: YoutubeService) { }
@@ -46,16 +46,19 @@ export class VideoSearchItemComponent implements OnInit {
     this.router.navigate(['/watch'], { queryParams: { video: this.video.id } });
   }
 
-  toggleWatchLater(event: Event) : void {
+  toggleWatchLater(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
-    const method = !this.isWatchLater ? 'add' : 'delete'
-    this.youtubeService.updateWatchLater(this.video.id, method);
+    if (!this.isWatchLater) {
+      this.youtubeService.addToWatchList(this.video.id);
+    } else {
+      this.youtubeService.removeFromWatchList(this.video.id);
+    }
   }
 
-  public removeActionOnClick(video:Video) : void {
-		this.removeAction.emit(video);
-	}
+  public removeActionOnClick(video: Video): void {
+    this.removeAction.emit(video);
+  }
 }
 
 

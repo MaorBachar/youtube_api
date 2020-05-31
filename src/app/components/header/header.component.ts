@@ -20,21 +20,21 @@ export class HeaderComponent implements OnInit {
       }
     });
 
-    this.watchLaterSubscription = this.youtubeService.getWatchLater().subscribe((list: object) => {
-      this.numOfWatchLaterVideos = Object.keys(list).length;
+    this.watchLaterSubscription = this.youtubeService.getWatchLater().subscribe((list: Set<string>) => {
+      this.numOfWatchLaterVideos = list.size;
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
-  search(): void {
+  search() {
     if(this.searchValue){
       this.router.navigate(['/results'], { queryParams: { query: this.searchValue } });
     }
   }
 
-  watchLater(): void {
+  watchLater() {
     this.router.navigate(['/watchLater']);
   }
 

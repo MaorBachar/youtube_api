@@ -24,7 +24,7 @@ export class ResultsComponent implements OnInit {
   private watchLaterSubscription: Subscription;
   private pagination: Pagination = new Pagination();
   public videos: Video[];
-  public watchLaterListDic: object;
+  public watchListSet: Set<string>;
   public loading: boolean = false;
 
   constructor(private youtubeService: YoutubeService) {
@@ -39,9 +39,9 @@ export class ResultsComponent implements OnInit {
       }
     });
 
-    this.watchLaterSubscription = this.youtubeService.getWatchLater().subscribe((list: object) => {
+    this.watchLaterSubscription = this.youtubeService.getWatchLater().subscribe((list: Set<string>) => {
       if (list) {
-          this.watchLaterListDic = list;
+          this.watchListSet = list;
       }
     })
 
