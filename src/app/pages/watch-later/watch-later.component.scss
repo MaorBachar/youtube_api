@@ -1,0 +1,8 @@
+@import '~src/assets/styles/base';
+
+.container{
+    margin: 8px 16px;
+    color: $color-text;
+    display: flex;
+    flex-direction: column;
+}

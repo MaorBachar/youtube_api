@@ -1,0 +1,13 @@
+<div class="statistics">
+    <div class="wrapper">
+        <span class="statistics__views">{{data.statistics.viewCount | number:'2.'}} views</span>
+        <span class="divider"> • </span>
+        <span class="statistics__published">{{data.publishedAt | date}}</span>
+    </div>
+    <div class="wrapper">
+        <span class="statistics__item" *ngFor="let item of listOrder">
+            <mat-icon matBadgeColor="accent" >{{list[item]}}</mat-icon>
+            <span>{{(data.statistics[item] ? data.statistics[item] : 0) | shortNumber}}</span>
+        </span>
+    </div>
+</div>

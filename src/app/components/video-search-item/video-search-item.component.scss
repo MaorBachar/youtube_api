@@ -1,0 +1,50 @@
+@import "~src/assets/styles/base";
+
+.video {
+    display: flex;
+    margin: 8px 16px;
+    height: 190px;
+    background: $color-bg-black;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    .video__actions {
+        position: relative;
+        .video__watch-later {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            cursor: pointer;
+            overflow: hidden;
+            mat-icon {
+                margin: 0 3px;
+            }
+            .watch-later__text {
+                white-space: nowrap;
+                padding-right: 5px;
+            }
+            .active{
+                color:#00bdfb;
+            }
+            .inactive{
+
+            }
+        }
+    }
+    .video__details {
+        padding-left: 5px;
+        .video__title {
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+        .video__description {
+            padding-top: 10px;
+            color: lightgray;
+        }
+    }
+}

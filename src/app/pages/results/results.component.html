@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"  [@listAnimation]="videos.length" >
+        <div class="results__item"*ngFor="let video of videos">
+            <app-video-search-item [video]="video" [isWatchLater]="watchLaterListDic[video.id]" (mouseenter)="video.hover=true" (mouseleave)="video.hover=false"></app-video-search-item>
+        </div>
+    </div>
+</div>

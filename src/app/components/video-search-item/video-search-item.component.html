@@ -1,0 +1,29 @@
+<div class="container video" (click)="watch()">
+    <div class="video__actions">
+        <img class="video__img" [src]="video.thumbnail">
+        <div class="video__watch-later" (mouseenter)="watchLaterHover=true" (mouseleave)="watchLaterHover=false"
+            *ngIf="video.hover" (click)="toggleWatchLater($event)">
+            <ng-container *ngIf="!isWatchLater; else done">
+                <mat-icon>watch_later</mat-icon>
+                <span class="watch-later__text inactive" *ngIf="watchLaterHover" [@anim]="watchLaterHover">WATCH LATER</span>
+            </ng-container>
+            <ng-template #done>
+                <mat-icon class="active">done</mat-icon>
+                <span class="watch-later__text active" *ngIf="watchLaterHover" [@anim]="watchLaterHover">DONE</span>
+            </ng-template>
+        </div>
+    </div>
+    <div class="video__details">
+        <h3 class="video__title">
+            {{video.title}}
+        </h3>
+        <div class="video__date">
+            {{video.publishedAt | timeago}}
+        </div>
+        <div class="video__description">
+            {{ (video.description.length>250)? (video.description | slice:0:250)+'..':(video.description) }}
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Watch later</h1>
+    <span *ngIf="videos&&videos.length; else placeholder">{{videos&&videos.length}} videos</span>
+    <div class="results__item"*ngFor="let video of videos">
+        <app-video-search-item [video]="video" (mouseenter)="video.hover=true" (mouseleave)="video.hover=false"></app-video-search-item>
+    </div>
+    <ng-template #placeholder>
+        <span> Please add videos to your watch list </span>
+    </ng-template>
+</div>

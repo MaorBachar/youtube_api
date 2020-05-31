@@ -1,0 +1,23 @@
+.statistics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .wrapper {
+        display: flex;
+        .divider {
+            padding: 0 5px;
+        }
+    }
+    .statistics__item {
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+        span {
+            padding-left: 5px;
+        }
+    }
+
+    .statistics__like {
+        padding-right: 10px;
+    }
+}

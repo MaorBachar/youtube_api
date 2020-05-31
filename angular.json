@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/styles/theme.scss",
               "src/styles.scss"
+
             ],
             "scripts": []
           },
@@ -92,6 +94,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/styles/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "my-youtube"
+    }
+  },
+  "defaultProject": "my-youtube",
+  "cli": {
+    "analytics": false
+  }
 }
