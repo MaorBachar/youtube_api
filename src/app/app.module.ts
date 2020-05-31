@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TimeagoModule } from 'ngx-timeago';
 
@@ -24,6 +25,7 @@ import { VideoStatisticsComponent } from './components/video-statistics/video-st
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
 import { WatchLaterComponent } from './pages/watch-later/watch-later.component';
+import { NoResultsComponent } from './components/no-results/no-results.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { WatchLaterComponent } from './pages/watch-later/watch-later.component';
     VideoStatisticsComponent,
     ShortNumberPipe,
     LoaderComponent,
-    WatchLaterComponent
+    WatchLaterComponent,
+    NoResultsComponent,
 
   ],
   imports: [
@@ -49,6 +52,7 @@ import { WatchLaterComponent } from './pages/watch-later/watch-later.component';
     MatButtonModule,
     InfiniteScrollModule,
     MatBadgeModule,
+    MatMenuModule,
     TimeagoModule.forRoot()
 
   ],

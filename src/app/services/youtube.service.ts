@@ -15,7 +15,7 @@ export class YoutubeService extends HttpHandler {
   private searchSubject = new BehaviorSubject<string>(null);
   private watchLaterSubject = new BehaviorSubject<object>(this.getWatchLaterFromStorage());
   private baseUrl: string = 'https://www.googleapis.com/youtube/v3/';
-  private key: string = 'AIzaSyDZOBvO9GyUDy03aoQDsh_7ycF5yUEEbSs';
+  private key: string = 'AIzaSyDAojEskB_rO0Hh1tF3xtOkcZCcwYM0hd8';
 
 
   public getSearchedVideos(query: VideoSearchReq) {
@@ -41,10 +41,10 @@ export class YoutubeService extends HttpHandler {
   }
 
   public getWatchLaterFromStorage(): Array<string> {
-    return JSON.parse(localStorage.getItem('WatchLater')) ? JSON.parse(localStorage.getItem('WatchLater')) : {};
+    return JSON.parse(localStorage.getItem('watchLater')) ? JSON.parse(localStorage.getItem('watchLater')) : new Object();
   }
   public updateWatchLater(videoId: string, method: string): void {
-    const list: object = this.getWatchLaterFromStorage() ?  this.getWatchLaterFromStorage() : {};
+    const list: object = this.getWatchLaterFromStorage();
     switch (method) {
       case 'add':
         list[videoId] = true;
@@ -53,8 +53,7 @@ export class YoutubeService extends HttpHandler {
         delete list[videoId];
         break;
     }
-    localStorage.setItem('date',JSON.stringify(new Date()));
-    localStorage.setItem('WatchLater', JSON.stringify(list));
+    localStorage.setItem('watchLater', JSON.stringify(list));
     this.watchLaterSubject.next(list);
   }
 

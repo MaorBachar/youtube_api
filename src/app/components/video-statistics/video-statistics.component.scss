@@ -21,3 +21,12 @@
         padding-right: 10px;
     }
 }
+
+@media screen and (max-width:450px) {
+    .statistics{
+        flex-wrap: wrap;
+        .wrapper{
+            margin-top: 5px;
+        }
+    }
+  }

@@ -34,7 +34,6 @@ export class WatchComponent implements OnInit {
     const query: VideoDetailReq = new VideoDetailReq();
     query.id = [this.videoId];
     this.youtubeService.getVideosDetails(query).subscribe((res) => {
-      debugger
       if (res.items && res.items[0]) {
         const item = res.items[0];
         this.data = new Video(

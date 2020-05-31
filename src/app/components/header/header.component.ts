@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class HeaderComponent implements OnInit {
   private watchLaterSubscription: Subscription;
-  searchValue: string;
-  numOfWatchLaterVideos: number;
+  public searchValue: string;
+  public numOfWatchLaterVideos: number;
   constructor(private router: Router, private activateRoute: ActivatedRoute, private youtubeService: YoutubeService) {
     this.activateRoute.queryParams.subscribe((params: Params) => {
       if (params.query) {
@@ -29,7 +29,9 @@ export class HeaderComponent implements OnInit {
   }
 
   search(): void {
-    this.router.navigate(['/results'], { queryParams: { query: this.searchValue } });
+    if(this.searchValue){
+      this.router.navigate(['/results'], { queryParams: { query: this.searchValue } });
+    }
   }
 
   watchLater(): void {

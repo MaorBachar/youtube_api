@@ -25,6 +25,7 @@ export class ResultsComponent implements OnInit {
   private pagination: Pagination = new Pagination();
   public videos: Video[];
   public watchLaterListDic: object;
+  public loading: boolean = false;
 
   constructor(private youtubeService: YoutubeService) {
   }
@@ -49,6 +50,9 @@ export class ResultsComponent implements OnInit {
 
   private getSearchedVideos(pageToken: string = undefined): void {
     const query: VideoSearchReq = this.buildQuery(this.pagination, pageToken);
+    if(!pageToken){
+      this.loading = true;
+    }
     this.youtubeService.getSearchedVideos(query).subscribe(res => {
       if (res.items) {
         const items = res.items.map(item => new Video(
@@ -60,6 +64,7 @@ export class ResultsComponent implements OnInit {
         ));
         this.pagination.nextPageToken = res.nextPageToken;
         this.videos.push(...items);
+        this.loading = false;
       }
     })
   }

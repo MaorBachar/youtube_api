@@ -1,11 +1,12 @@
 <div class="container video" (click)="watch()">
     <div class="video__actions">
         <img class="video__img" [src]="video.thumbnail">
-        <div class="video__watch-later" (mouseenter)="watchLaterHover=true" (mouseleave)="watchLaterHover=false"
-            *ngIf="video.hover" (click)="toggleWatchLater($event)">
+        <div class="video__watch-later" *ngIf="withWatchLater&&video.hover" (mouseenter)="watchLaterHover=true"
+            (mouseleave)="watchLaterHover=false" (click)="toggleWatchLater($event)">
             <ng-container *ngIf="!isWatchLater; else done">
                 <mat-icon>watch_later</mat-icon>
-                <span class="watch-later__text inactive" *ngIf="watchLaterHover" [@anim]="watchLaterHover">WATCH LATER</span>
+                <span class="watch-later__text inactive" *ngIf="watchLaterHover" [@anim]="watchLaterHover">WATCH
+                    LATER</span>
             </ng-container>
             <ng-template #done>
                 <mat-icon class="active">done</mat-icon>
@@ -24,6 +25,17 @@
             {{ (video.description.length>250)? (video.description | slice:0:250)+'..':(video.description) }}
 
         </div>
+    </div>
+    <div class="menu__actions" *ngIf="this.withActions">
+        <button mat-icon-button [matMenuTriggerFor]="menu"  (click)="$event.stopPropagation();" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngIf="withRemoveAction" (click)="removeActionOnClick(video)">
+              <mat-icon>delete</mat-icon>
+              <span>Remove</span>
+            </button>
+          </mat-menu>
     </div>
 
 </div>

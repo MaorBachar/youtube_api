@@ -1,13 +1,15 @@
 @import "~src/assets/styles/base";
 
 .video {
+    position: relative;
     display: flex;
-    margin: 8px 16px;
-    height: 190px;
+    margin: 8px 0;
+    min-height: 190px;
     background: $color-bg-black;
     padding: 5px;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
     .video__actions {
         position: relative;
         .video__watch-later {
@@ -37,9 +39,11 @@
         }
     }
     .video__details {
+        min-width: 320px;
+
         padding-left: 5px;
         .video__title {
-            font-weight: 500;
+            font-weight: 700;
             margin-bottom: 0;
         }
         .video__description {
@@ -47,4 +51,18 @@
             color: lightgray;
         }
     }
+
+    .menu__actions{
+        right: 0;
+        position: absolute;
+    }
 }
+
+
+@media screen and (max-width:450px) {
+    .video { 
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+  }

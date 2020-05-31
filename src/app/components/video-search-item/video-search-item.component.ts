@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Video } from 'src/app/models/video.model';
 import {
   trigger,
@@ -29,9 +29,12 @@ import { YoutubeService } from 'src/app/services/youtube.service';
 })
 export class VideoSearchItemComponent implements OnInit {
   @Input() video: Video;
-  @Input() withDescription: boolean = true;
-  @Input() withWatchLater: boolean = true;
   @Input() isWatchLater: boolean = false;
+  @Input() withDescription: boolean = true;
+  @Input() withWatchLater: boolean = false;
+  @Input() withActions: boolean = false;
+  @Input() withRemoveAction: boolean = false;
+  @Output() removeAction  = new EventEmitter();
 
   public watchLaterHover: boolean = false;
   constructor(private router: Router, private youtubeService: YoutubeService) { }
@@ -40,16 +43,19 @@ export class VideoSearchItemComponent implements OnInit {
   }
 
   watch(): void {
-    debugger
     this.router.navigate(['/watch'], { queryParams: { video: this.video.id } });
   }
 
-  toggleWatchLater(event: Event) {
+  toggleWatchLater(event: Event) : void {
     event.preventDefault();
     event.stopPropagation();
     const method = !this.isWatchLater ? 'add' : 'delete'
     this.youtubeService.updateWatchLater(this.video.id, method);
   }
+
+  public removeActionOnClick(video:Video) : void {
+		this.removeAction.emit(video);
+	}
 }
 
 

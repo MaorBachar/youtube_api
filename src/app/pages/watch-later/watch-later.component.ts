@@ -10,16 +10,15 @@ import { Video } from 'src/app/models/video.model';
   styleUrls: ['./watch-later.component.scss']
 })
 export class WatchLaterComponent implements OnInit {
-  private watchLaterSubscription: Subscription;
   public videosIds: Array<string>;
   public videos: Video[] = [];
+  public loading: boolean = false;
   constructor(private youtubeService: YoutubeService) {
-    this.watchLaterSubscription = this.youtubeService.getWatchLater().subscribe((list: object) => {
-      this.videosIds = Object.keys(list);
+      this.videosIds = Object.keys(this.youtubeService.getWatchLaterFromStorage());
       if (this.videosIds && this.videosIds.length) {
         this.getVideos();
       }
-    })
+
   }
 
   ngOnInit(): void {
@@ -29,9 +28,10 @@ export class WatchLaterComponent implements OnInit {
   getVideos() {
     const query: VideoDetailReq = new VideoDetailReq();
     query.id = this.videosIds;
+    this.loading = true;
     this.youtubeService.getVideosDetails(query).subscribe(res => {
       if (res.items) {
-        debugger
+        this.videos = [];
         const items = res.items.map(item => {
           return new Video(
             item.id,
@@ -42,14 +42,20 @@ export class WatchLaterComponent implements OnInit {
             item.statistics);
         }
         );
-
+        this.loading = false;
         this.videos.push(...items);
       }
     })
   }
+  removeVideo(video:Video){
+    var foundIndex = this.videos.findIndex((obj:Video) => video.id === obj.id);
+    if(!isNaN(foundIndex)){
+      this.youtubeService.updateWatchLater(video.id,'delete');
+      this.videos.splice(foundIndex,1);
+    }
+  }
 
   ngOnDestroy(): void {
-    this.watchLaterSubscription.unsubscribe();
   }
 
 
