@@ -15,7 +15,7 @@ export class YoutubeService extends HttpHandler {
   private searchSubject = new BehaviorSubject<string>(null);
   private watchLaterSubject = new BehaviorSubject<Set<string>>(this.getWatchLaterFromStorage());
   private baseUrl: string = 'https://www.googleapis.com/youtube/v3/';
-  private key: string = '';
+  private key: string = 'AIzaSyBD8vOusQyT1hOgGVI_H37ZOqsXrplCvCg';
 
 
   public getSearchedVideos(query: VideoSearchReq) {

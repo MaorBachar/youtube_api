@@ -1,5 +1,11 @@
 @import '~src/assets/styles/base';
 
-.container{
-    margin:0 16px;
+.results{ 
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
+
+.results::-webkit-scrollbar {
+    display: none;
+  }

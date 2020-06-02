@@ -1,7 +1,7 @@
-<div class="container video" (click)="watch()">
+<div class=" video" (click)="watch()">
     <div class="video__actions">
         <img class="video__img" [src]="video.thumbnail">
-        <div class="video__watch-later" *ngIf="withWatchLater&&video.hover" (mouseenter)="watchLaterHover=true"
+        <!-- <div class="video__watch-later" *ngIf="withWatchLater&&video.hover" (mouseenter)="watchLaterHover=true"
             (mouseleave)="watchLaterHover=false" (click)="toggleWatchLater($event)">
             <ng-container *ngIf="!isWatchLater; else done">
                 <mat-icon>watch_later</mat-icon>
@@ -12,19 +12,19 @@
                 <mat-icon class="active">done</mat-icon>
                 <span class="watch-later__text active" *ngIf="watchLaterHover" [@anim]="watchLaterHover">DONE</span>
             </ng-template>
-        </div>
+        </div> -->
     </div>
     <div class="video__details">
         <h3 class="video__title">
             {{video.title}}
         </h3>
         <div class="video__date">
-            {{video.publishedAt | timeago}}
+            Created {{video.publishedAt | timeago}}
         </div>
-        <div class="video__description">
+        <!-- <div class="video__description">
             {{ (video.description.length>250)? (video.description | slice:0:250)+'..':(video.description) }}
 
-        </div>
+        </div> -->
     </div>
     <div class="menu__actions" *ngIf="this.withActions">
         <button mat-icon-button [matMenuTriggerFor]="menu"  (click)="$event.stopPropagation();" aria-label="Example icon-button with a menu">

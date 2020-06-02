@@ -53,20 +53,20 @@ export class ResultsComponent implements OnInit {
     if(!pageToken){
       this.loading = true;
     }
-    this.youtubeService.getSearchedVideos(query).subscribe(res => {
-      if (res.items) {
-        const items = res.items.map(item => new Video(
-          item.id.videoId,
-          item.snippet.title,
-          item.snippet.description,
-          new Date(item.snippet.publishedAt),
-          item.snippet.thumbnails.medium.url,
-        ));
-        this.pagination.nextPageToken = res.nextPageToken;
-        this.videos.push(...items);
-        this.loading = false;
-      }
-    })
+      this.youtubeService.getSearchedVideos(query).subscribe(res => {
+        if (res.items) {
+          const items = res.items.map(item => new Video(
+            item.id.videoId,
+            item.snippet.title,
+            item.snippet.description,
+            new Date(item.snippet.publishedAt),
+            item.snippet.thumbnails.medium.url,
+            ));
+            this.pagination.nextPageToken = res.nextPageToken;
+            this.videos.push(...items);
+            this.loading = false;
+          }
+        })
   }
 
   private buildQuery(pagination: Pagination, pageToken: string): VideoSearchReq {
@@ -78,6 +78,7 @@ export class ResultsComponent implements OnInit {
   }
 
   public onScroll(): void {
+    debugger
     this.getSearchedVideos(this.pagination.nextPageToken);
   }
 

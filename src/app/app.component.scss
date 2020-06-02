@@ -1,4 +1,23 @@
-.container{
-    margin-top: 56px;
-    padding-top: 5px;
+:host {
+    display: flex;
+    height: 100%;
+}
+
+.container {
+    margin: 20px 15px 0 15px;
+    .header {
+        margin: 10px 0 30px;
+    }
+
+    .content {
+        height: calc(100% - 118px);
+        padding: 15px;
+        background: #403647;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.7);
+        margin: 0 15px 15px;
+        color: #cbcaca;
+        border-radius: 0 0 4px 4px;
+        position: relative;
+        overflow: hidden;
+    }
 }

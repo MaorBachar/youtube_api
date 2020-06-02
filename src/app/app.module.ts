@@ -26,6 +26,10 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
 import { WatchLaterComponent } from './pages/watch-later/watch-later.component';
 import { NoResultsComponent } from './components/no-results/no-results.component';
+import { NavComponent } from './components/nav/nav.component';
+import { NavItemComponent } from './components/nav/nav-item/nav-item.component';
+import { NavDividerComponent } from './components/nav/nav-divider/nav-divider.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { NoResultsComponent } from './components/no-results/no-results.component
     LoaderComponent,
     WatchLaterComponent,
     NoResultsComponent,
+    NavComponent,
+    NavItemComponent,
+    NavDividerComponent,
+    SearchComponent,
 
   ],
   imports: [

@@ -21,6 +21,11 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                    "src"
+              ]
+            },
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -28,7 +33,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/styles/theme.scss",
+              "src/theme.scss",
               "src/styles.scss"
 
             ],
@@ -94,7 +99,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/styles/theme.scss",
+              "src/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -129,6 +134,15 @@
     }
   },
   "defaultProject": "my-youtube",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  },
   "cli": {
     "analytics": false
   }

@@ -1,0 +1,34 @@
+
+// Bootstrap variables
+$font-family-base: 'Roboto' ,'Raleway', Helvetica;
+$font-weight-light: 100;
+$font-weight-regular: 400;
+$font-weight-bold: 500;
+
+$brand-primary: white;
+$brand-primary-opacity: rgba(250,250,250,.5);
+$input-border-focus: lighten($brand-primary,20%);
+$border-radius-base: 0;
+$border-radius-small: 0;
+$font-weight-lighter: 100;
+$gray-darker: #cbcaca;
+
+// Cloud Player variables
+$btn-width: 40px;
+$btn-color: $brand-primary;
+$light-white: #fcfcfc;
+$light-boxshadow: 0 0 8px 0 rgb(200, 200, 200);
+
+// aux.app variables
+$aux-brand-primary: #e800b4;
+$purple-light: #9981a8;
+$purple: #564065;
+$purple-darker: #5d5563;
+$purple-dark: #403647;
+$primary-boxshadow: 0 0 8px 0 rgba(0,0,0,0.7);
+$primay-gradient: linear-gradient($purple-dark,$purple);
+
+
+
+
+$font-light:  'Roboto-light';

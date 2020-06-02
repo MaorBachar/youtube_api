@@ -1,0 +1,15 @@
+<div class="collection-search">
+    <form class="input-group"
+          autocomplete="off"
+          (submit)="search()">
+      <mat-icon color="primary">search</mat-icon>
+      <input  type="text"
+             class="form-control"
+             aria-describedby="basic-addon3"
+             name="search"
+             placeholder="Search"
+             [(ngModel)]="searchValue"
+             #searchInput>
+      <!-- <app-loading-spinner [isIdle]="isIdle" [isLoading]="isLoading"></app-loading-spinner> -->
+    </form>
+  </div>

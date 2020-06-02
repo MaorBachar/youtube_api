@@ -1,0 +1,9 @@
+<a [routerLink]="link"
+   [routerLinkActive]="['is-active']"
+   [ngClass]="{'is-link': link}"
+   class="nav-item" (mouseenter)="setHover('enter')" (mouseleave)="setHover('leave')">
+  <mat-icon *ngIf="icon" [@hoverOnItem]="state" class="icon" aria-hidden="true">{{icon}}</mat-icon>
+  <div *ngIf="title" [@hoverOnItem]="state" class="text">{{title}}</div>
+</a>
+
+

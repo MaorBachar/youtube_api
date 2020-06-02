@@ -1,0 +1,24 @@
+@import "variables";
+:host{
+    cursor: default;
+    .title {
+        display: flex;
+    .text{
+        color:$purple-light;
+    }
+    &:before,
+    &:after {
+        display: block;
+      content: "";
+      position: relative;
+      border-top: 1px solid $purple-light;
+      flex-grow: 1;
+      margin: 9px 3px;
+    }
+    
+    &:before {
+        max-width: 10px;
+        margin-right: 3px
+    }
+}
+}
