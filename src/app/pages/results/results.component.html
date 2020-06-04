@@ -1,15 +1,15 @@
-<!-- <ng-container *ngIf="!loading; else loader"> -->
-    <div class="results" *ngIf="videos&&videos.length;" infiniteScroll
-        [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="onScroll()" [scrollWindow]="false"
-        [@listAnimation]="videos.length">
+<ng-container *ngIf="!loading; else loader">
+    <div class="results" *ngIf="videos&&videos.length; else noResults" infiniteScroll [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="500" (scrolled)="onScroll()" [scrollWindow]="false">
         <app-video-search-item *ngFor="let video of videos" [video]="video" [withWatchLater]="true"
             [isWatchLater]="watchListSet.has(video.id)" (mouseenter)="video.hover=true"
-            (mouseleave)="video.hover=false"></app-video-search-item>
+            (mouseleave)="video.hover=false">
+        </app-video-search-item>
     </div>
-    <!-- <ng-template #noResults>
+    <ng-template #noResults>
         <app-no-results></app-no-results>
     </ng-template>
 </ng-container>
 <ng-template #loader>
     <app-loader></app-loader>
-</ng-template> -->
+</ng-template>

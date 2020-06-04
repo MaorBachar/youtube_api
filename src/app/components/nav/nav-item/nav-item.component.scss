@@ -27,7 +27,8 @@
     .text,
     mat-icon {
       color: $gray-darker;
-      font-weight: 400;
+      font-weight: $font-weight-bold;
+      transition: color 0.6s ease;
     }
 
 
@@ -42,5 +43,17 @@
         color: $gray-darker;
       }
     }
+  }
+
+  .is-active{
+    .text,mat-icon{
+      font-weight: $font-weight-bold;
+      color:$aux-brand-primary !important;
+    }
+  }
+  
+  .disable-link{
+    pointer-events: none;
+    cursor: not-allowed;
   }
 }

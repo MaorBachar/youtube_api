@@ -1,11 +1,28 @@
-@import '~src/assets/styles/base';
+@import 'variables';
 
-.container{
-    margin:16px;
-    color: $color-text;
+:host{
     display: flex;
     flex-direction: column;
+    height: 100%;
+
     h1{
-        font-weight: 500;
+        font-weight: $font-weight-bold;
     }
 }
+
+.videos__count{
+    padding-bottom: 5px;
+}
+.divider{
+    box-shadow: $divider-boxshadow;
+    height: 1px;
+    margin: 0 -15px;
+}
+.results{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height:calc(100% - 80px);
+}
+.results::-webkit-scrollbar {
+    display: none;
+  }

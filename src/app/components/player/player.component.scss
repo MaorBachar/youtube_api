@@ -1,0 +1,55 @@
+@import 'variables';
+
+
+:host{
+    z-index: 2;
+    max-width: 320px;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.7);
+    background: linear-gradient($purple-dark,$purple);
+}
+
+.player{
+    height: 100%;
+}
+youtube-player{
+    min-height: 180px;
+}
+.controls{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    padding: 0 60px;
+    mat-icon{
+        font-size:50px;
+        width: 50px;
+        height: 50px;
+        color:$purple-light;
+        cursor: pointer;
+    }
+
+    mat-icon:hover{
+        color:$aux-brand-primary;
+    }
+}
+
+.wrapper{
+position: relative;
+height: 100%;
+.divider{
+    position: absolute;
+    width: 100%;
+    top: -9px;
+    z-index: 1;
+}
+    .related-videos{
+        background: $purple-dark;
+        height: calc(100% - 280px);
+        overflow-x: hidden;
+    }
+    
+    .related-videos::-webkit-scrollbar {
+        display: none;
+      }
+}
+

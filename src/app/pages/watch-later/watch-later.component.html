@@ -1,16 +1,19 @@
-<div class="container" *ngIf="!loading; else loader">
+<ng-container *ngIf="!loading; else loader">
     <h1>Watch later</h1>
     <ng-container *ngIf="videos&&videos.length; else noResults">
-        <span>{{videos&&videos.length}} videos</span>
-        <div class="results__item" *ngFor="let video of videos">
-            <app-video-search-item [video]="video" [withWatchLater]="false" [withActions]="true"
-                [withRemoveAction]="true" (removeAction)="removeVideo($event)"></app-video-search-item>
+        <span class="videos__count">{{videos&&videos.length}} videos</span>
+        <div class="divider"></div>
+        <div class="results">
+            <div class="results__item" *ngFor="let video of videos">
+                <app-video-search-item [video]="video" [withWatchLater]="false" [withActions]="true"
+                    [withRemoveAction]="true" (removeAction)="removeVideo($event)"></app-video-search-item>
+            </div>
         </div>
     </ng-container>
     <ng-template #noResults>
         <span> Please add videos to your watch list </span>
     </ng-template>
-</div>
+</ng-container>
 <ng-template #loader>
     <app-loader></app-loader>
 </ng-template>

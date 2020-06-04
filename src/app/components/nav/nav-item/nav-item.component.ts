@@ -20,15 +20,12 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 })
 export class NavItemComponent implements OnInit {
   state: string = 'leave';
-  @Input()
-  public title: string;
+  @Input() title: string;
 
-  @Input()
-  public link: string;
+  @Input() link: string;
 
-  @Input()
-  public icon: string;
-
+  @Input() icon: string;
+  @Input() disable: boolean = false;
 
   constructor() { }
 

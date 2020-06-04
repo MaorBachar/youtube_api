@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Statistics, Video } from 'src/app/models/video.model';
+import { Video } from 'src/app/models/video.model';
 
 @Component({
   selector: 'app-video-statistics',
@@ -12,10 +12,11 @@ export class VideoStatisticsComponent implements OnInit {
     likeCount: 'thumb_up',
     dislikeCount: 'thumb_down',
     favoriteCount:'favorite',
-    commentCount:'comment'
+    commentCount:'comment',
+    viewCount:'visibility'
   }
 
-  public listOrder: Array<string> = ['likeCount','dislikeCount','favoriteCount', 'commentCount'];
+  public listOrder: Array<string> = ['viewCount','likeCount','dislikeCount','favoriteCount', 'commentCount'];
   constructor() { }
 
   ngOnInit(): void {

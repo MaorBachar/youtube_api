@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { WatchComponent } from './pages/watch/watch.component';
 import { ResultsComponent } from './pages/results/results.component';
 
 import { MatInputModule } from '@angular/material/input';
@@ -15,8 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TimeagoModule } from 'ngx-timeago';
+import { NgxYoutubePlayerModule  } from "ngx-youtube-player";
 
 import { HttpHandler } from './services/httpHandler';
 import { VideoSearchItemComponent } from './components/video-search-item/video-search-item.component';
@@ -30,12 +30,11 @@ import { NavComponent } from './components/nav/nav.component';
 import { NavItemComponent } from './components/nav/nav-item/nav-item.component';
 import { NavDividerComponent } from './components/nav/nav-divider/nav-divider.component';
 import { SearchComponent } from './components/search/search.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    WatchComponent,
     ResultsComponent,
     VideoSearchItemComponent,
     VideoStatisticsComponent,
@@ -47,6 +46,7 @@ import { SearchComponent } from './components/search/search.component';
     NavItemComponent,
     NavDividerComponent,
     SearchComponent,
+    PlayerComponent,
 
   ],
   imports: [
@@ -61,7 +61,9 @@ import { SearchComponent } from './components/search/search.component';
     InfiniteScrollModule,
     MatBadgeModule,
     MatMenuModule,
-    TimeagoModule.forRoot()
+    MatTooltipModule,
+    TimeagoModule.forRoot(),
+    NgxYoutubePlayerModule.forRoot()
 
   ],
   providers: [HttpHandler],

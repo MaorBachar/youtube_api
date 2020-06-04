@@ -1,18 +1,23 @@
 export class Video {
     id: string;
+    channelTitle:string;
     title: string;
+    duration: string;
     description: string;
     publishedAt: Date;
     thumbnail: string;
     hover: boolean;
     statistics: Statistics;
-    constructor(id: string, title: string, description: string, publishedAt: Date, thumbnail: string, statistics: Statistics = undefined) {
+    contentDetails: ContentDetails;
+    constructor(id: string, channelTitle:string, title: string, description: string, publishedAt: Date, thumbnail: string, statistics: Statistics = undefined, contentDetails: ContentDetails = undefined) {
         this.id = id;
+        this.channelTitle = channelTitle;
         this.title = title;
         this.description = description;
         this.publishedAt = publishedAt;
         this.thumbnail = thumbnail;
-        this.statistics = statistics
+        this.statistics = statistics;
+        this.contentDetails = contentDetails;
     }
 }
 
@@ -31,4 +36,12 @@ export class Statistics {
         viewCount = this.viewCount;
     }
     // 
+}
+
+export class ContentDetails {
+    duration: string;
+
+    constructor(duration:string){
+        this.duration = duration;
+    }
 }

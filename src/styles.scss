@@ -27,6 +27,7 @@ $Roboto-bold: "./assets/fonts/Roboto-Bold.ttf";
 * {
     font-family: $font-family-base;
     font-weight: 400;
+    font-size: $font-size-small;
   }
   
   html, body {
@@ -44,5 +45,11 @@ body {
     margin: auto;
     max-width: 1370px;
 
+}
+
+.mat-tooltip{
+  background: $purple-primary-opacity;
+  color: $brand-primary;
+  
 }
 

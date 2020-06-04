@@ -1,6 +1,6 @@
-@import '~src/assets/styles/base';
+@import 'variables';
 
-.container {
+:host {
     width: calc(100% - 32px);
     height: 100%;
     display: flex;
@@ -9,5 +9,5 @@
     align-items: center;
     position: absolute;
     top: 0;
-    color: $color-text;
+    color: $brand-primary;
 }

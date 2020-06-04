@@ -1,21 +1,26 @@
+@import 'variables';
+
 :host {
     display: flex;
     height: 100%;
 }
 
 .container {
-    margin: 20px 15px 0 15px;
+    margin: 20px 0 0 0;
+    max-width: 800px;
+    min-width: 800px;
     .header {
         margin: 10px 0 30px;
+        padding-left: 15px;
     }
-
+    
     .content {
-        height: calc(100% - 118px);
-        padding: 15px;
-        background: #403647;
+        height: calc(100% - 90px);
+        padding: 15px 15px 0 15px;
+        background: $purple-dark;
         box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.7);
-        margin: 0 15px 15px;
-        color: #cbcaca;
+        margin: 0;
+        color: $gray-darker;
         border-radius: 0 0 4px 4px;
         position: relative;
         overflow: hidden;

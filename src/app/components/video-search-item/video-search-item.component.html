@@ -1,41 +1,43 @@
-<div class=" video" (click)="watch()">
-    <div class="video__actions">
+<div class="video__actions">
+
+    <div class="video" *ngIf="withStatistics && video && video.statistics || !withStatistics && video" [@fadeInOnEnter]
+        [ngClass]="{'with_border': withBorder}" (click)="watch()">
         <img class="video__img" [src]="video.thumbnail">
-        <!-- <div class="video__watch-later" *ngIf="withWatchLater&&video.hover" (mouseenter)="watchLaterHover=true"
-            (mouseleave)="watchLaterHover=false" (click)="toggleWatchLater($event)">
+        <div class="video__details">
+            <h3 class="video__title">
+                {{ (video.title&&video.title.length>70) ? (video.title | slice:0:70)+'..'  : (video.title) }}
+
+            </h3>
+            <div class="user-name_date">
+                <span class="video__username">{{video.channelTitle}}</span>
+                <span class="video__date">
+                    created {{video.publishedAt | timeago}}
+                </span>
+            </div>
+            <app-video-statistics *ngIf="withStatistics" [data]="video"></app-video-statistics>
+        </div>
+        <div class="video__watch-later" *ngIf="withWatchLater" [ngClass]="{'done':isWatchLater}"
+            mdTooltipClass="tooltip" matTooltipPosition="left" matTooltip="Watch later"
+            (click)="toggleWatchLater($event)">
             <ng-container *ngIf="!isWatchLater; else done">
                 <mat-icon>watch_later</mat-icon>
-                <span class="watch-later__text inactive" *ngIf="watchLaterHover" [@anim]="watchLaterHover">WATCH
-                    LATER</span>
             </ng-container>
             <ng-template #done>
-                <mat-icon class="active">done</mat-icon>
-                <span class="watch-later__text active" *ngIf="watchLaterHover" [@anim]="watchLaterHover">DONE</span>
+                <mat-icon class="done">done</mat-icon>
             </ng-template>
-        </div> -->
-    </div>
-    <div class="video__details">
-        <h3 class="video__title">
-            {{video.title}}
-        </h3>
-        <div class="video__date">
-            Created {{video.publishedAt | timeago}}
         </div>
-        <!-- <div class="video__description">
-            {{ (video.description.length>250)? (video.description | slice:0:250)+'..':(video.description) }}
 
-        </div> -->
     </div>
     <div class="menu__actions" *ngIf="this.withActions">
-        <button mat-icon-button [matMenuTriggerFor]="menu"  (click)="$event.stopPropagation();" aria-label="Example icon-button with a menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
+        </button>
+        <mat-menu #menu="matMenu">
             <button mat-menu-item *ngIf="withRemoveAction" (click)="removeActionOnClick(video)">
-              <mat-icon>delete</mat-icon>
-              <span>Remove</span>
+                <mat-icon>delete</mat-icon>
+                <span>Remove</span>
             </button>
-          </mat-menu>
+        </mat-menu>
     </div>
 
 </div>

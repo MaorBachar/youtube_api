@@ -1,4 +1,4 @@
-<div class="statistics">
+<!-- <div class="statistics">
     <div class="wrapper">
         <span class="statistics__views">{{data.statistics.viewCount | number:'2.'}} views</span>
         <span class="divider"> • </span>
@@ -10,4 +10,14 @@
             <span>{{(data.statistics[item] ? data.statistics[item] : 0) | shortNumber}}</span>
         </span>
     </div>
+</div> -->
+
+<div class="statistics" *ngIf="data&&data.statistics">
+    <!-- <span
+        class="statistics__views">{{(data.statistics&& data.statistics.viewCount ? data.statistics.viewCount : 0) | shortNumber}}
+        views</span> -->
+    <span class="statistics__item" *ngFor="let item of listOrder">
+        <mat-icon matBadgeColor="accent">{{list[item]}}</mat-icon>
+        <span>{{(data.statistics&&data.statistics[item] ? data.statistics[item] : 0) | shortNumber}}</span>
+    </span>
 </div>

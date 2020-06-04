@@ -1,0 +1,23 @@
+<div class="player" [hidden]="!video">
+    <youtube-player id="videoEl" [videoId]="videoId" [width]="320" [height]="180" (ready)="savePlayer($event)"
+        (change)="onStateChange($event)" [playerVars]="playerVars"></youtube-player>
+
+    <div class="controls" [@fadeInOnEnter]>
+        <mat-icon (click)="prevVideo()">fast_rewind</mat-icon>
+        <mat-icon (click)="playVideo()" *ngIf="ytEvent !== 1">play_circle_outline</mat-icon>
+        <mat-icon (click)="pauseVideo()" *ngIf="ytEvent === 1">pause_circle_outline</mat-icon>
+        <mat-icon (click)="nextVideo()">fast_forward</mat-icon>
+
+    </div>
+    <div class="wrapper" *ngIf="video&&relatedVideos&&relatedVideos.length" [@fadeInOnEnter]>
+        <div class="divider">
+            <app-nav-divider title="Related videos"></app-nav-divider>
+        </div>
+        <div class="related-videos">
+            <app-video-search-item *ngFor="let item of relatedVideos" [withStatistics]="false" [withBorder]="false"
+                [video]="item">
+
+            </app-video-search-item>
+        </div>
+    </div>
+</div>

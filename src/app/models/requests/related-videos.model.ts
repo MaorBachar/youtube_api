@@ -1,14 +1,22 @@
 import { HttpParams } from '@angular/common/http';
 
-export class VideoDetailReq {
+export class RelatedVideoReq {
     key: string;
-    part: string = 'statistics, snippet, contentDetails';
-    id: Array<string> = [];
+    relatedToVideoId: string;
+    type: string = "video";
+    part: string = 'snippet';
 
-    constructor(key: string = undefined, part: string = "statistics, snippet, contentDetails", id: Array<string> = []) {
+    constructor(
+        key: string = undefined,
+        relatedToVideoId: string = undefined,
+        type: string = "video",
+        part: string = 'snippet',
+    ) {
         this.key = key;
+        this.relatedToVideoId = relatedToVideoId;
+        this.type = type;
         this.part = part;
-        this.id = id;
+
     }
 
     public toHttpParams(): HttpParams {

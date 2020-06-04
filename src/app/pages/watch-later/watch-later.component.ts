@@ -13,17 +13,18 @@ export class WatchLaterComponent implements OnInit {
   public videos: Video[] = [];
   public loading: boolean = false;
   constructor(private youtubeService: YoutubeService) {
-      this.videosIds = Array.from(this.youtubeService.getWatchLaterFromStorage());
-      if (this.videosIds && this.videosIds.length) {
-        this.getVideos();
-      }
+    this.videosIds = Array.from(this.youtubeService.getWatchLaterFromStorage());
+    if (this.videosIds && this.videosIds.length) {
+      this.getVideos();
+    }
 
   }
 
   ngOnInit(): void {
 
   }
-
+  /*fetching videos from localstorage (watch later list),
+  */
   getVideos() {
     const query: VideoDetailReq = new VideoDetailReq();
     query.id = this.videosIds;
@@ -34,27 +35,32 @@ export class WatchLaterComponent implements OnInit {
         const items = res.items.map(item => {
           return new Video(
             item.id,
+            item.channelTitle,
             item.snippet.title,
             item.snippet.description,
             new Date(item.snippet.publishedAt),
             item.snippet.thumbnails.medium.url,
-            item.statistics);
+            item.statistics,
+            item.contentDetails);
         }
         );
-        this.loading = false;
         this.videos.push(...items);
+        // updating the playlist (next,prev buttons) while scrolling - / fetchin data.
+        this.youtubeService.updateResultsList(this.videos);
+        this.loading = false;
       }
     })
   }
-  removeVideo(video:Video){
-    var foundIndex = this.videos.findIndex((obj:Video) => video.id === obj.id);
-    if(!isNaN(foundIndex)){
+  removeVideo(video: Video) {
+    var foundIndex = this.videos.findIndex((obj: Video) => video.id === obj.id);
+    if (!isNaN(foundIndex)) {
+      /*fetching videos from localstorage (watch later list),
+      *update subscriber - results page in order to show the correct and most updated state
+      * is video selected to be in watch later lisr or not 
+      */
       this.youtubeService.removeFromWatchList(video.id);
-      this.videos.splice(foundIndex,1);
+      this.videos.splice(foundIndex, 1);
     }
-  }
-
-  ngOnDestroy(): void {
   }
 
 
