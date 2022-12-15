@@ -23,7 +23,7 @@
     "@angular/router": "~9.1.7",
     "@types/youtube": "0.0.39",
     "angular-animations": "0.0.10",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash": "^4.17.21",
     "ngx-infinite-scroll": "^9.0.0",
     "ngx-timeago": "^1.0.4",
